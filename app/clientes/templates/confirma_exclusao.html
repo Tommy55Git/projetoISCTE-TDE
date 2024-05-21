@@ -1,14 +1,13 @@
-{% extends "clientes/base.html" %}
-
+{% extends "base.html" %}
 
 {% block titulo %}
-Listagem de cliente
+Remoção de clientes
 {% endblock titulo %}
 
 {% block conteudo %}
 <div class="card">
     <div class="card-header">
-        Dados do cliente
+        Tem certeza que deseja remover o cliente abaixo ?
     </div>
     <div class="card-body">
         <h5 class="card-title">Nome: {{cliente.nome}}</h5>
@@ -16,12 +15,11 @@ Listagem de cliente
         <h5 class="card-title">Data de nascimento: {{cliente.data_nascimento}}</h5>
         <h5 class="card-title">Email: {{cliente.email}}</h5>
         <h5 class="card-title">Profissão: {{cliente.profissao}}</h5>
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary">Voltar</a>
-</form>
+            <button class="btn btn-danger" type="submit">Remover</button>
+        </form>
     </div>
-
 </div>
-
-
 {% endblock conteudo %}

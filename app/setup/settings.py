@@ -46,7 +46,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "index.apps.ClientesConfig",
+    "index.apps.IndexConfig",
     "clientes.apps.ClientesConfig",
 ]
 
