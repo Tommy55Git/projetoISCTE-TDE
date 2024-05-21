@@ -10,5 +10,4 @@ handler404 = 'setup.views.custom_404_view'  # Ajuste para o caminho correto do m
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('index.urls')),
-    path('clientes/', include('clientes.urls')),
 ]
