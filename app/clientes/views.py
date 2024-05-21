@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='index')
 def listar_clientes(request):
     clientes = cliente_services.listar_cliente()
-    return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
+    return render(request, 'lista_clientes.html', {'clientes': clientes})
 
 @login_required(login_url='index')
 def inserir_cliente(request):
@@ -29,12 +29,12 @@ def inserir_cliente(request):
             return redirect('listar_clientes')  # REDIRECIONA PARA A LISTAGEM
     else:
         form = ClienteForm()
-    return render(request, 'clientes/form_cliente.html', {'form': form})
+    return render(request, 'form_cliente.html', {'form': form})
 
 @login_required(login_url='index')
 def listar_cliente_id(request, id):
     cliente = cliente_services.listar_cliente_id(id)
-    return render(request, 'clientes/listar_cliente_id.html', {'cliente': cliente})
+    return render(request, 'listar_cliente_id.html', {'cliente': cliente})
 
 @login_required(login_url='index')
 def editar_cliente(request, id):
@@ -50,7 +50,7 @@ def editar_cliente(request, id):
 
         cliente_services.editar_cliente(cliente_antigo, cliente_novo)
         return redirect('listar_clientes')
-    return render(request, 'clientes/form_cliente.html', {'form': form})
+    return render(request, 'form_cliente.html', {'form': form})
 
 @login_required(login_url='index')
 def remover_cliente(request, id):
@@ -58,4 +58,4 @@ def remover_cliente(request, id):
     if request.method == 'POST':
         cliente.delete()
         return redirect('listar_clientes')
-    return render(request, 'clientes/confirma_exclusao.html', {'cliente': cliente})
+    return render(request, 'confirma_exclusao.html', {'cliente': cliente})
